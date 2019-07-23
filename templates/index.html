@@ -1,0 +1,142 @@
+(% extends 'layout.html' %)
+(% block title %) <title>M2</title> (% endblock %)
+
+(% block head %)
+    (( super() ))
+    <script src="https://kit.fontawesome.com/aca3fb88dd.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+(% endblock %)
+(% block content %)
+
+<body id="dashboard">
+    <div id="app">
+    <div class="row">
+
+        <!-- SIDEBAR -->
+    <div class="col-lg-2 col-md-12 col-sm-12 sidebar">
+        
+        <h2>ჯონ დოუ</h2>
+        <ul>
+            <li><a href="">ჩემი პროფილი</a></li>
+            <li><a href="">სტუმრების ისტორია</a></li>
+            <li><a href="">ჩაწერილი სტუმრები</a></li>
+        </ul>
+
+        <footer>
+            <img src="./static/img/logo.png" width="80%" alt="logo">
+            <p>2019წ.  ყველა უფლება დაცულია</p>
+        </footer>
+    </div>
+<!-- SIDEBAR ENDS -->
+
+
+
+
+
+<!-- CONTENT -->
+    <div class="col-lg-10 col-md-12 col-sm-12 content">
+
+        <div class="row mt-3 list-buttons">
+            <div class="col-lg-6 guest-list">
+                <!-- VISITORS COUNTER -->
+                <h6><span style="color: #F47427">([[guest = visitors.length ]])</span> ჩაწერილი სტუმრების სია</h6>
+            </div>
+
+            <!-- BUTTON SHOULD ADD A VISITOR -->
+            <div class="col-lg-6 add-guest">
+                <button @click="showModal = true">დაამატე სტუმარი <i class="fas fa-plus-circle"></i></button>
+            </div>
+        </div>
+
+        <!-- UNDERLINE -->
+        <hr class="bg-#E6E6E6">
+
+        <!-- ALERTS -->
+        <div class="alert alert-danger" v-if="errorMsg">[[errorMsg ]]</div>
+        <div class="alert alert-success" v-if="successMsg" transition=1500>[[successMsg ]]</div>
+
+        <!-- DISPLAYING TABLES -->
+        <div class="row">
+            <div class="col-lg-12 table-content">
+                <table class="table" style="z-index: 99">
+                    <thead>
+                        <tr class="text-left bg-#E1E1E1">
+                            <th>სახელი</th>
+                            <th>ტელეფონის ნომერი</th>
+                            <th>მანქანის ნომერი</th>
+                            <th>მასპინძლის სახელი</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-left" v-for="visitor in visitors">
+                            <td>[[visitor.name ]]</td>
+                            <td>[[visitor.number ]]</td>
+                            <td>[[visitor.carNumber ]]</td>
+                            <td>[[visitor.hostName ]]</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span v-if="guest == 0" class="no-guests">თქვენ არ გყავთ ჩაწერილი სტუმარი</span>
+            </div>
+        </div>
+
+<!-- ADDING VISITOR MODAL -->
+<div id="overlay" v-if="showModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--MODAL HEAD -->
+                <div class="modal-header">
+                    <h5 class="modal-title">სტუმრის დამატება </h5>
+                    <button type="button" class="close" @click="showModal = false">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <!--MODAL BODY -->
+                <div class="modal-body p-4">
+                    <form action="#" method="POST" id="visitors-adding">
+
+                        <div class="form-group">
+                            <input type="text" name="fullname" class="form-control form-control-lg" placeholder="სრული სახელი" v-model="newVisitor.name">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" name="number" class="form-control form-control-lg" placeholder="ტელეფონის ნომერი" v-model="newVisitor.number" v-validate="'required|min:6'">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="carnumber" class="form-control form-control-lg" placeholder="მანქანის ნომერი" v-model="newVisitor.carNumber" v-validate="'required|min:6'">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="hostname" class="form-control form-control-lg" placeholder="მასპინძლის სახელი" v-model="newVisitor.hostName" v-validate="'required|min:6'">
+                        </div>
+
+                        <div class="form-group">
+                                <button class="btn btn-block btn-lg" @click="showModal = false; addVisitor();">დამატება</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>   
+
+
+
+
+
+
+</div> 
+<!-- CONTENT ENDS -->
+
+<!-- SCRIPTS RUNS HERE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/static/js/App.js"></script>
+
+    
+(% endblock %)

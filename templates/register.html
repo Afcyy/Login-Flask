@@ -1,0 +1,40 @@
+(% extends 'layout.html' %)
+(% block title %) <title>Sign up</title>(% endblock %)
+
+(% block head %)
+(( super() ))
+
+(% endblock %)
+
+(% block content %)
+<body id="Log-In-Page">
+
+    <figure>
+        <img src="./static/img/logo.png" alt="logo">
+        <h1>მოგესალმებით</h1>
+        <h6><span>რეგისტრაცია:</span></h6>
+        <form action="/register", method="POST" id="log-in">
+            <label for="fname">სრული სახელი:</label>
+            <input type="text" id="fname" name="name" placeholder="&#xf007;  სრული სახელი">
+        
+            <label for="lname">პაროლი:</label>
+            <input type="password" id="pass" name="password" placeholder="&#xf023;  ჩაწერეთ პაროლი">
+
+            <label for="lname">მისამართი:</label>
+            <input type="text" id="adrs" name="address" placeholder="&#xf023;  ჩაწერეთ მისამართი">
+
+            <label for="lname">ტელეფონის ნომერი:</label>
+            <input type="text" id="phonenumber" name="phonenumber" placeholder="&#xf023;  ჩაწერეთ ტელეფონის ნომერი">
+               
+               
+               
+            <input type="submit" value="რეგისტრაცია &#xf0a9;">
+            <div class="underline"></div>
+            <p>უკვე ხართ დარეგისტრირებული? <span><a href="/" style="color: #F47427">გაიარეთ ავტორიზაცია.</a></span></p>
+          </form>
+
+    </figure>
+
+</body>
+
+(% endblock %)

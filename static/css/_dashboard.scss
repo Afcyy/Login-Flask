@@ -1,0 +1,145 @@
+#dashboard {
+    background: #f9f9f9;
+    overflow-x: hidden;
+    font-family: $font;
+    
+}
+
+.sidebar {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    transform-origin: left;
+    position: sticky;
+    
+
+    h2 {
+        width: auto;
+        height: 2em;
+        font-family: FiraGO;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        color: #9F9FA2;
+        border-bottom: 1px solid #9F9FA2;
+        margin: 3em 0;
+    }
+}
+
+
+
+li {
+    font-family: FiraGO;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 3em;
+
+    a {
+        color: #9F9FA2;
+
+        &:hover {
+            text-decoration: none;
+            color: rgb(142, 142, 143);
+        }
+    }
+
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+
+    footer p {
+        font-family: $font;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 15px;
+        line-height: 0px;
+        color: #9F9FA2;
+    }
+}
+
+.row {
+    z-index: -1;
+}
+
+.content {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    padding: 10em;
+}
+
+.list-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.guest-list h6 {
+    font-family: $font;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 29px;
+}
+
+
+.add-guest {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0 2em;
+
+    button {
+        background: none;
+        border: none;
+        font-family: $font;
+        font-size: 20px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    i {
+        color: #f47427;
+    }
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+span.no-guests {
+    font-size: 25px !important;
+    color: #9F9FA2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e1e1e1;
+    height: 100%;
+    margin-top: -0.70em;
+    z-index: -10;
+}
+
+tr{
+    padding: 0 2em;
+}

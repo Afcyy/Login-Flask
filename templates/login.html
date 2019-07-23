@@ -1,0 +1,40 @@
+(% extends 'layout.html' %)
+(% block title %) <title>Sign in</title>(% endblock %)
+
+(% block head %)
+(( super() ))
+
+(% endblock %)
+
+(% block content %)
+<body id="Log-In-Page">
+
+    <figure>
+        <img src="./static/img/logo.png" alt="logo">
+        <h1>მოგესალმებით</h1>
+        <h6><span>ავტორიზაცია</span></h6>
+        (% with messages = get_flashed_messages()  %)
+        (% if messages %)
+            <div class="lashepa"> 
+                (( messages[0 ]))
+            </div>
+        (% endif %)
+        (% endwith %)
+        <form method='POST' action='/'  id="log-in">
+            <label for="fname">სახელი:</label>
+            <input type="text" id="fname" name="name" placeholder="&#xf007;  სრული სახელი">
+        
+            <label for="lname">პაროლი:</label>
+            <input type="password" id="lname" name="password" placeholder="&#xf023;  ჩაწერეთ პაროლი">
+            <span class="forgot-password"><a href="#">დაგავიწყდათ პაროლი?</a></span>
+               
+            <input type="submit" value="შესვლა &#xf0a9;">
+            <div class="underline"></div>
+            <p>არ ხართ დარეგისტრირებული? <span><a href="register" style="color: #F47427">დარეგისტრირდი ახლა.</a></span></p>
+          </form>
+
+    </figure>
+
+</body>
+
+(% endblock %)
